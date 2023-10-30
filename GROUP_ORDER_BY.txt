@@ -1,0 +1,64 @@
+Usando o SQL de insert de veículos das aulas anteriores.
+
+https://github.com/juliooidella/bancoDadosSenai/blob/main/veiculos.sql
+
+
+A linguagem SQL permite melhorar o processo de manipulação de dados por meio da agregação de dados. O processo consiste em agregar os registros e aplicar um cálculo, normalmente através de funções.
+
+Vamos utilizar um exemplo para entender melhor o método.
+
+Utilizando a tabela VEICULOS, é possível contar os registros, renomeando a coluna para um novo nome:
+
+
+select COUNT(*) QTD_VEICULOS from veiculo
+
+
+
+A função COUNT(*) permite aplicar um cálculo de contagem de registro das colunas da tabela. Podemos utilizar outros comandos, por exemplo, com WHERE, para obter os VEICULOS de um determinado fabricante.
+
+
+
+select COUNT(*) QTD_VEICULOS from veiculo
+where fabricante = 10
+
+
+
+E se quisermos saber o resultado da contagem de registro a cada fabricante? Devemos aplicar o comando GROUP BY no final. O comando irá agregar a contagem para cada fabricante;
+
+
+
+select fabricante, COUNT(*) QTD_VEICULOS from veiculo
+group by fabricante
+
+
+
+Ordenação de registros
+
+A partir de poucos comandos, transformamos os dados em algo que possa fazer sentido,. Podemos adicionar um comando que pode facilitar a forma que os registros estão disposto: ORDER BY.
+
+
+
+Ordenar por fabricante
+
+select fabricante, COUNT(*) QTD_VEICULOS from veiculo
+group by fabricante
+order by fabricante asc
+
+
+
+Ordenar da menor quantidade para a maior
+
+select fabricante, COUNT(*) QTD_VEICULOS from veiculo
+group by fabricante
+order by COUNT(*)  asc
+
+
+
+ou do menor para o maior usando DESC no lugar do ASC
+
+select fabricante, COUNT(*) QTD_VEICULOS from veiculo
+group by fabricante
+order by COUNT(*)  desc
+
+
+
